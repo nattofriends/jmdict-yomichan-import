@@ -1,0 +1,20 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - checkout
+      - run: curl -O http://ftp.monash.edu/pub/nihongo/JMdict_e.gz
+      - run: gunzip JMdict_e.gz
+      - run: ./yomichan-import -format edict -title "JMdict $(date +%Y-%m-%d)" JMdict_e JMdict_e.zip
+
+workflows:
+  version: 2
+  periodic:
+    jobs:
+      - build
+    triggers:
+      - schedule:
+        cron: "0 0 * * *"
