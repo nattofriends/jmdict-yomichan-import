@@ -33,11 +33,16 @@ jobs:
         gunzip JMdict_e.gz
         
     - name: Convert JMdict
-      run: bin/yomichan-import -format edict -title "JMdict $(date +%Y-%m-%d)" JMdict_e JMdict_e.zip
+      run: |
+        bin/yomichan-import -format edict -title "JMdict $(date +%Y-%m-%d)" JMdict_e JMdict_e.zip
+        mkdir tmp
+        mv JMdict_e.zip tmp/
+        cd tmp
+        unzip JMdict_e.zip
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
         # A file, directory or wildcard pattern that describes what to upload
-        path: JMdict_e.zip
+        path: tmp/
         name: JMdict_e
