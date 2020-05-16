@@ -39,6 +39,7 @@ jobs:
         mv JMdict_e.zip tmp/
         cd tmp
         unzip JMdict_e.zip
+        rm JMdict_e.zip
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
