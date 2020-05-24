@@ -2,4 +2,4 @@
 
 View builds to download artifacts.
 
-![Build](https://github.com/nattofriends/jmdict-yomichan-import/workflows/Build/badge.svg)
+[![Build](https://github.com/nattofriends/jmdict-yomichan-import/workflows/Build/badge.svg)](https://github.com/nattofriends/jmdict-yomichan-import/actions)
