@@ -39,7 +39,7 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: tmp/JMdict_e.zip
+        file: JMdict_e.zip
         asset_name: JMdict_e.zip
         tag: release-holder
         overwrite: true
