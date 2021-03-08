@@ -28,7 +28,7 @@ jobs:
 
     - name: Download JMdict
       run: |
-        curl -O http://ftp.monash.edu/pub/nihongo/JMdict_e.gz
+        curl -O http://ftp.edrdg.org/pub/Nihongo/JMdict_e.gz
         gunzip JMdict_e.gz
   
     - name: Convert JMdict
