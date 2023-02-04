@@ -19,16 +19,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    
-    - uses: actions/setup-go@v3
-      with:
-        go-version: '~1.15.15' # The Go version to download (if necessary) and use.
-
-    # Runs a single command using the runners shell
-    - name: Build yomichan-import
-      run: GOPATH=$PWD go get github.com/nattofriends/yomichan-import
+    - name: Download yomichan-import
+      run: |
+        curl -O https://github.com/FooSoft/yomichan-import/releases/download/21.12.14.0/yomichan-import_linux.tar.gz
+        tar xzvf yomichan-import_linux.tar.gz
 
     - name: Download JMdict
       run: |
@@ -37,7 +31,7 @@ jobs:
   
     - name: Convert JMdict
       run: |
-        bin/yomichan-import -format edict -title "JMdict $(date +%Y-%m-%d)" JMdict_e JMdict_e.zip
+        yomichan-import/yomichan -format edict -title "JMdict $(date +%Y-%m-%d)" JMdict_e JMdict_e.zip
 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
